@@ -26,6 +26,10 @@ target_compile_options(bm3dhip_kernel PRIVATE
     -mno-wavefrontsize64 -mcumode)
 target_link_libraries(bm3dhip_kernel hip::device)
 
+# Set compiler and linker
+set(CMAKE_CXX_COMPILER ${HIP_HIPCC_EXECUTABLE})
+set(CMAKE_CXX_LINKER   ${HIP_HIPCC_EXECUTABLE})
+
 add_library(bm3dhip SHARED)
 target_link_libraries(bm3dhip bm3dhip_source bm3dhip_kernel)
 
